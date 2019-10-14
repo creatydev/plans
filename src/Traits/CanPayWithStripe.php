@@ -1,12 +1,12 @@
 <?php
 
-namespace Rennokki\Plans\Traits;
+namespace Creatydev\Plans\Traits;
 
 use Carbon\Carbon;
 use Stripe\Stripe;
 use Stripe\Charge as StripeCharge;
 use Stripe\Customer as StripeCustomer;
-use Rennokki\Plans\Helpers\StripeHelper;
+use Creatydev\Plans\Helpers\StripeHelper;
 
 trait CanPayWithStripe
 {
@@ -192,9 +192,9 @@ trait CanPayWithStripe
                     'expires_on' => Carbon::now()->addDays($lastDueSubscription->recurring_each_days),
                 ]);
 
-                event(new \Rennokki\Plans\Events\Stripe\DueSubscriptionChargeSuccess($this, $lastDueSubscription, $stripeCharge));
+                event(new \Creatydev\Plans\Events\Stripe\DueSubscriptionChargeSuccess($this, $lastDueSubscription, $stripeCharge));
             } catch (\Exception $exception) {
-                event(new \Rennokki\Plans\Events\Stripe\DueSubscriptionChargeFailed($this, $lastDueSubscription, $exception));
+                event(new \Creatydev\Plans\Events\Stripe\DueSubscriptionChargeFailed($this, $lastDueSubscription, $exception));
 
                 return false;
             }

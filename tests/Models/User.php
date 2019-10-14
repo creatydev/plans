@@ -1,8 +1,8 @@
 <?php
 
-namespace Rennokki\Plans\Test\Models;
+namespace Creatydev\Plans\Test\Models;
 
-use Rennokki\Plans\Traits\HasPlans;
+use Creatydev\Plans\Traits\HasPlans;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rennokki\Plans\Events;
+namespace Creatydev\Plans\Events;
 
 use Illuminate\Queue\SerializesModels;
 

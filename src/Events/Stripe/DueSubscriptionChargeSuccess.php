@@ -1,6 +1,6 @@
 <?php
 
-namespace Rennokki\Plans\Events\Stripe;
+namespace Creatydev\Plans\Events\Stripe;
 
 use Stripe\Charge as StripeCharge;
 use Illuminate\Queue\SerializesModels;

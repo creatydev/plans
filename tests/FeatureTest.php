@@ -1,8 +1,8 @@
 <?php
 
-namespace Rennokki\Plans\Test;
+namespace Creatydev\Plans\Test;
 
-use Rennokki\Plans\Models\PlanFeatureModel;
+use Creatydev\Plans\Models\PlanFeatureModel;
 
 class FeatureTest extends TestCase
 {
@@ -13,8 +13,8 @@ class FeatureTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(\Rennokki\Plans\Test\Models\User::class)->create();
-        $this->plan = factory(\Rennokki\Plans\Models\PlanModel::class)->create();
+        $this->user = factory(\Creatydev\Plans\Test\Models\User::class)->create();
+        $this->plan = factory(\Creatydev\Plans\Models\PlanModel::class)->create();
     }
 
     /**

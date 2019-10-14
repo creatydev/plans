@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(\Rennokki\Plans\Test\Models\User::class, function () {
+$factory->define(\Creatydev\Plans\Test\Models\User::class, function () {
     return [
         'name' => 'Name'.Str::random(5),
         'email' => Str::random(5).'@gmail.com',

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rennokki\Plans\Models;
+namespace Creatydev\Plans\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

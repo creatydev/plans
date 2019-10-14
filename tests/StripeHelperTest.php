@@ -1,8 +1,8 @@
 <?php
 
-namespace Rennokki\Plans\Test;
+namespace Creatydev\Plans\Test;
 
-use Rennokki\Plans\Helpers\StripeHelper;
+use Creatydev\Plans\Helpers\StripeHelper;
 
 class StripeHelperTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rennokki\Plans\Traits;
+namespace Creatydev\Plans\Traits;
 
 use Carbon\Carbon;
 
@@ -189,13 +189,13 @@ trait HasPlans
                     'is_paid' => true,
                 ]);
 
-                event(new \Rennokki\Plans\Events\Stripe\ChargeSuccessful($this, $subscription, $stripeCharge));
+                event(new \Creatydev\Plans\Events\Stripe\ChargeSuccessful($this, $subscription, $stripeCharge));
             } catch (\Exception $exception) {
-                event(new \Rennokki\Plans\Events\Stripe\ChargeFailed($this, $subscription, $exception));
+                event(new \Creatydev\Plans\Events\Stripe\ChargeFailed($this, $subscription, $exception));
             }
         }
 
-        event(new \Rennokki\Plans\Events\NewSubscription($this, $subscription));
+        event(new \Creatydev\Plans\Events\NewSubscription($this, $subscription));
 
         return $subscription;
     }
@@ -243,13 +243,13 @@ trait HasPlans
                     'is_paid' => true,
                 ]);
 
-                event(new \Rennokki\Plans\Events\Stripe\ChargeSuccessful($this, $subscription, $stripeCharge));
+                event(new \Creatydev\Plans\Events\Stripe\ChargeSuccessful($this, $subscription, $stripeCharge));
             } catch (\Exception $exception) {
-                event(new \Rennokki\Plans\Events\Stripe\ChargeFailed($this, $subscription, $exception));
+                event(new \Creatydev\Plans\Events\Stripe\ChargeFailed($this, $subscription, $exception));
             }
         }
 
-        event(new \Rennokki\Plans\Events\NewSubscriptionUntil($this, $subscription, $date));
+        event(new \Creatydev\Plans\Events\NewSubscriptionUntil($this, $subscription, $date));
 
         return $subscription;
     }
@@ -285,7 +285,7 @@ trait HasPlans
             ]);
         }
 
-        event(new \Rennokki\Plans\Events\UpgradeSubscription($this, $subscription, $startFromNow, $oldPlan, $newPlan));
+        event(new \Creatydev\Plans\Events\UpgradeSubscription($this, $subscription, $startFromNow, $oldPlan, $newPlan));
 
         return $subscription;
     }
@@ -329,7 +329,7 @@ trait HasPlans
             ]);
         }
 
-        event(new \Rennokki\Plans\Events\UpgradeSubscriptionUntil($this, $subscription, $date, $startFromNow, $oldPlan, $newPlan));
+        event(new \Creatydev\Plans\Events\UpgradeSubscriptionUntil($this, $subscription, $date, $startFromNow, $oldPlan, $newPlan));
 
         return $subscription;
     }
@@ -366,7 +366,7 @@ trait HasPlans
                 'expires_on' => Carbon::parse($activeSubscription->expires_on)->addDays($duration),
             ]);
 
-            event(new \Rennokki\Plans\Events\ExtendSubscription($this, $activeSubscription, $startFromNow, null));
+            event(new \Creatydev\Plans\Events\ExtendSubscription($this, $activeSubscription, $startFromNow, null));
 
             return $activeSubscription;
         }
@@ -383,7 +383,7 @@ trait HasPlans
             'recurring_each_days' => $duration,
         ]));
 
-        event(new \Rennokki\Plans\Events\ExtendSubscription($this, $activeSubscription, $startFromNow, $subscription));
+        event(new \Creatydev\Plans\Events\ExtendSubscription($this, $activeSubscription, $startFromNow, $subscription));
 
         return $subscription;
     }
@@ -421,7 +421,7 @@ trait HasPlans
                 'expires_on' => $date,
             ]);
 
-            event(new \Rennokki\Plans\Events\ExtendSubscriptionUntil($this, $activeSubscription, $date, $startFromNow, null));
+            event(new \Creatydev\Plans\Events\ExtendSubscriptionUntil($this, $activeSubscription, $date, $startFromNow, null));
 
             return $activeSubscription;
         }
@@ -442,7 +442,7 @@ trait HasPlans
             'recurring_each_days' => Carbon::now()->subSeconds(1)->diffInDays($date),
         ]));
 
-        event(new \Rennokki\Plans\Events\ExtendSubscriptionUntil($this, $activeSubscription, $date, $startFromNow, $subscription));
+        event(new \Creatydev\Plans\Events\ExtendSubscriptionUntil($this, $activeSubscription, $date, $startFromNow, $subscription));
 
         return $subscription;
     }
@@ -469,7 +469,7 @@ trait HasPlans
             'is_recurring' => false,
         ]);
 
-        event(new \Rennokki\Plans\Events\CancelSubscription($this, $activeSubscription));
+        event(new \Creatydev\Plans\Events\CancelSubscription($this, $activeSubscription));
 
         return $activeSubscription;
     }

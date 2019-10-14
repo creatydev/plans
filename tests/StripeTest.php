@@ -1,6 +1,6 @@
 <?php
 
-namespace Rennokki\Plans\Test;
+namespace Creatydev\Plans\Test;
 
 use Carbon\Carbon;
 
@@ -14,9 +14,9 @@ class StripeTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(\Rennokki\Plans\Test\Models\User::class)->create();
-        $this->plan = factory(\Rennokki\Plans\Models\PlanModel::class)->create();
-        $this->newPlan = factory(\Rennokki\Plans\Models\PlanModel::class)->create();
+        $this->user = factory(\Creatydev\Plans\Test\Models\User::class)->create();
+        $this->plan = factory(\Creatydev\Plans\Models\PlanModel::class)->create();
+        $this->newPlan = factory(\Creatydev\Plans\Models\PlanModel::class)->create();
 
         $this->initiateStripeAPI();
     }

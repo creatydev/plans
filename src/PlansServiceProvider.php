@@ -1,6 +1,6 @@
 <?php
 
-namespace Rennokki\Plans;
+namespace Creatydev\Plans;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,12 +1,12 @@
-[![Build Status](https://travis-ci.org/rennokki/plans.svg?branch=master)](https://travis-ci.org/rennokki/plans)
-[![codecov](https://codecov.io/gh/rennokki/plans/branch/master/graph/badge.svg)](https://codecov.io/gh/rennokki/plans/branch/master)
+[![Build Status](https://travis-ci.org/Creatydev/plans.svg?branch=master)](https://travis-ci.org/Creatydev/plans)
+[![codecov](https://codecov.io/gh/Creatydev/plans/branch/master/graph/badge.svg)](https://codecov.io/gh/Creatydev/plans/branch/master)
 [![StyleCI](https://github.styleci.io/repos/138162161/shield?branch=master)](https://github.styleci.io/repos/138162161)
-[![Latest Stable Version](https://poser.pugx.org/rennokki/plans/v/stable)](https://packagist.org/packages/rennokki/plans)
-[![Total Downloads](https://poser.pugx.org/rennokki/plans/downloads)](https://packagist.org/packages/rennokki/plans)
-[![Monthly Downloads](https://poser.pugx.org/rennokki/plans/d/monthly)](https://packagist.org/packages/rennokki/plans)
-[![License](https://poser.pugx.org/rennokki/plans/license)](https://packagist.org/packages/rennokki/plans)
+[![Latest Stable Version](https://poser.pugx.org/Creatydev/plans/v/stable)](https://packagist.org/packages/Creatydev/plans)
+[![Total Downloads](https://poser.pugx.org/Creatydev/plans/downloads)](https://packagist.org/packages/Creatydev/plans)
+[![Monthly Downloads](https://poser.pugx.org/Creatydev/plans/d/monthly)](https://packagist.org/packages/Creatydev/plans)
+[![License](https://poser.pugx.org/Creatydev/plans/license)](https://packagist.org/packages/Creatydev/plans)
 
-[![PayPal](https://img.shields.io/badge/PayPal-donate-blue.svg)](https://paypal.me/rennokki)
+[![PayPal](https://img.shields.io/badge/PayPal-donate-blue.svg)](https://paypal.me/Creatydev)
 
 # The package is not maintained anymore
 Try to fork your own version of the package or use [Laravel Spark](https://spark.laravel.com) for a complete experience on plans.
@@ -23,17 +23,17 @@ While Laravel Cashier does this job really well, there are some features that ca
 # Installation
 Install the package:
 ```bash
-$ composer require rennokki/plans
+$ composer require Creatydev/plans
 ```
 
 If your Laravel version does not support package discovery, add this line in the `providers` array in your `config/app.php` file:
 ```php
-Rennokki\Plans\PlansServiceProvider::class,
+Creatydev\Plans\PlansServiceProvider::class,
 ```
 
 Publish the config file & migration files:
 ```bash
-$ php artisan vendor:publish --provider=Rennokki\Plans\PlansServiceProvider
+$ php artisan vendor:publish --provider=Creatydev\Plans\PlansServiceProvider
 ```
 
 Migrate the database:
@@ -43,7 +43,7 @@ $ php artisan migrate
 
 Add the `HasPlans` trait to your Eloquent model:
 ```php
-use Rennokki\Plans\Traits\HasPlans;
+use Creatydev\Plans\Traits\HasPlans;
 
 class User extends Model {
     use HasPlans;
@@ -52,7 +52,7 @@ class User extends Model {
 ```
 
 # Creating plans
-The basic unit of the subscription-like system is a plan. You can create it using `Rennokki\Plans\Models\PlanModel` or your model, if you have implemented your own.
+The basic unit of the subscription-like system is a plan. You can create it using `Creatydev\Plans\Models\PlanModel` or your model, if you have implemented your own.
 
 ```php
 $plan = PlanModel::create([
@@ -74,7 +74,7 @@ Marking a feature type can be done using:
 
 **Note: For unlimited feature, the `limit` field will be set to any negative value.**
 
-To attach features to your plan, you can use the relationship `features()` and pass as many `Rennokki\Plans\Models\PlanFeatureModel`instances as you need:
+To attach features to your plan, you can use the relationship `features()` and pass as many `Creatydev\Plans\Models\PlanFeatureModel`instances as you need:
 ```php
 $plan->features()->saveMany([
     new PlanFeatureModel([
@@ -311,7 +311,7 @@ If you use the integrated Stripe Charge feature, you will have to pass a Stripe 
 $user->renewSubscription('tok...');
 ```
 
-As always, if the payment was processed, it will fire the `Rennokki\Plans\Stripe\ChargeSuccessful` event, or if the payment failed, it will fire `Rennokki\Plans\Stripe\ChargeFailed` event.
+As always, if the payment was processed, it will fire the `Creatydev\Plans\Stripe\ChargeSuccessful` event, or if the payment failed, it will fire `Creatydev\Plans\Stripe\ChargeFailed` event.
 
 # Due subscriptions
 Subscriptions that are not using the local Stripe Charge feature will never be marked as `Due` since all of them are paid, by default.
@@ -342,7 +342,7 @@ To do so, `chargeForLastDueSubscription()` will help you charge the user for the
 $user->withStripe()->withStripeToken('tok_...')->chargeForLastDueSubscription();
 ```
 
-For this method, `\Rennokki\Plans\Events\Stripe\DueSubscriptionChargeSuccess` and `\Rennokki\Plans\Events\Stripe\DueSubscriptionChargeFailed` are thrown on succesful charge or failed charge.
+For this method, `\Creatydev\Plans\Events\Stripe\DueSubscriptionChargeSuccess` and `\Creatydev\Plans\Events\Stripe\DueSubscriptionChargeFailed` are thrown on succesful charge or failed charge.
 
 # Model Extends
 
@@ -354,7 +354,7 @@ You can extend Plan models as well
 ```php
 <?php
 namespace App\Models;
-use Rennokki\Plans\Models\PlanModel;
+use Creatydev\Plans\Models\PlanModel;
 class Plan extends PlanModel {
     //
 }
@@ -364,7 +364,7 @@ class Plan extends PlanModel {
 ```php
 <?php
 namespace App\Models;
-use Rennokki\Plans\Models\PlanFeatureModel;
+use Creatydev\Plans\Models\PlanFeatureModel;
 class PlanFeature extends PlanFeatureModel {
     //
 }
@@ -374,7 +374,7 @@ class PlanFeature extends PlanFeatureModel {
 ```php
 <?php
 namespace App\Models;
-use Rennokki\Plans\Models\PlanSubscriptionModel;
+use Creatydev\Plans\Models\PlanSubscriptionModel;
 class PlanSubscription extends PlanSubscriptionModel {
     //
 }
@@ -384,7 +384,7 @@ class PlanSubscription extends PlanSubscriptionModel {
 ```php
 <?php
 namespace App\Models;
-use Rennokki\Plans\Models\PlanSubscriptionUsageModel;
+use Creatydev\Plans\Models\PlanSubscriptionUsageModel;
 class PlanSubscriptionUsage extends PlanSubscriptionUsageModel {
     //
 }
@@ -394,7 +394,7 @@ class PlanSubscriptionUsage extends PlanSubscriptionUsageModel {
 ```php
 <?php
 namespace App\Models;
-use Rennokki\Plans\Models\StripteCustomerModel;
+use Creatydev\Plans\Models\StripteCustomerModel;
 class StripeCustomer extends StripteCustomerModel {
     //
 }
@@ -410,39 +410,39 @@ All you have to do is to implement the following Events in your `EventServicePro
 ```php
 $listen = [
     ...
-    \Rennokki\Plans\Events\CancelSubscription::class => [
+    \Creatydev\Plans\Events\CancelSubscription::class => [
         // $event->model = The model that cancelled the subscription.
         // $event->subscription = The subscription that was cancelled.
     ],
-    \Rennokki\Plans\Events\NewSubscription::class => [
+    \Creatydev\Plans\Events\NewSubscription::class => [
         // $event->model = The model that was subscribed.
         // $event->subscription = The subscription that was created.
     ],
-     \Rennokki\Plans\Events\NewSubscriptionUntil::class => [
+     \Creatydev\Plans\Events\NewSubscriptionUntil::class => [
         // $event->model = The model that was subscribed.
         // $event->subscription = The subscription that was created.
     ],
-    \Rennokki\Plans\Events\ExtendSubscription::class => [
+    \Creatydev\Plans\Events\ExtendSubscription::class => [
         // $event->model = The model that extended the subscription.
         // $event->subscription = The subscription that was extended.
         // $event->startFromNow = If the subscription is exteded now or is created a new subscription, in the future.
         // $event->newSubscription = If the startFromNow is false, here will be sent the new subscription that starts after the current one ends.
     ],
-    \Rennokki\Plans\Events\ExtendSubscriptionUntil::class => [
+    \Creatydev\Plans\Events\ExtendSubscriptionUntil::class => [
         // $event->model = The model that extended the subscription.
         // $event->subscription = The subscription that was extended.
         // $event->expiresOn = The Carbon instance of the date when the subscription will expire.
         // $event->startFromNow = If the subscription is exteded now or is created a new subscription, in the future.
         // $event->newSubscription = If the startFromNow is false, here will be sent the new subscription that starts after the current one ends.
     ],
-    \Rennokki\Plans\Events\UpgradeSubscription::class => [
+    \Creatydev\Plans\Events\UpgradeSubscription::class => [
         // $event->model = The model that upgraded the subscription.
         // $event->subscription = The current subscription.
         // $event->startFromNow = If the subscription is upgraded now or is created a new subscription, in the future.
         // $event->oldPlan = Here lies the current (which is now old) plan.
         // $event->newPlan = Here lies the new plan. If it's the same plan, it will match with the $event->oldPlan
     ],
-    \Rennokki\Plans\Events\UpgradeSubscriptionUntil::class => [
+    \Creatydev\Plans\Events\UpgradeSubscriptionUntil::class => [
         // $event->model = The model that upgraded the subscription.
         // $event->subscription = The current subscription.
         // $event->expiresOn = The Carbon instance of the date when the subscription will expire.
@@ -450,34 +450,34 @@ $listen = [
         // $event->oldPlan = Here lies the current (which is now old) plan.
         // $event->newPlan = Here lies the new plan. If it's the same plan, it will match with the $event->oldPlan
     ],
-    \Rennokki\Plans\Events\FeatureConsumed::class => [
+    \Creatydev\Plans\Events\FeatureConsumed::class => [
         // $event->subscription = The current subscription.
         // $event->feature = The feature that was used.
         // $event->used = The amount used.
         // $event->remaining = The total amount remaining. If the feature is unlimited, will return -1
     ],
-     \Rennokki\Plans\Events\FeatureUnconsumed::class => [
+     \Creatydev\Plans\Events\FeatureUnconsumed::class => [
         // $event->subscription = The current subscription.
         // $event->feature = The feature that was used.
         // $event->used = The amount reverted.
         // $event->remaining = The total amount remaining. If the feature is unlimited, will return -1
     ],
-    \Rennokki\Plans\Events\Stripe\ChargeFailed::class => [
+    \Creatydev\Plans\Events\Stripe\ChargeFailed::class => [
         // $event->model = The model for which the payment failed.
         // $event->subscription = The subscription.
         // $event->exception = The exception thrown by the Stripe API wrapper.
     ],
-    \Rennokki\Plans\Events\Stripe\ChargeSuccessful::class => [
+    \Creatydev\Plans\Events\Stripe\ChargeSuccessful::class => [
         // $event->model = The model for which the payment succeded.
         // $event->subscription = The subscription which was updated as paid.
         // $event->stripeCharge = The response coming from the Stripe API wrapper.
     ],
-    \Rennokki\Plans\Events\Stripe\DueSubscriptionChargeFailed::class => [
+    \Creatydev\Plans\Events\Stripe\DueSubscriptionChargeFailed::class => [
         // $event->model = The model for which the payment failed.
         // $event->subscription = The due subscription that cannot be paid.
         // $event->exception = The exception thrown by the Stripe API wrapper.
     ],
-    \Rennokki\Plans\Events\Stripe\DueSubscriptionChargeSuccess::class => [
+    \Creatydev\Plans\Events\Stripe\DueSubscriptionChargeSuccess::class => [
         // $event->model = The model for which the payment succeded.
         // $event->subscription = The due subscription that was paid.
         // $event->stripeCharge = The response coming from the Stripe API wrapper.
@@ -487,10 +487,10 @@ $listen = [
 
 ## Authors
 
-* **Georgescu Alexandru** - *Initial work* - [rennokki](https://github.com/rennokki)
+* **Georgescu Alexandru** - *Initial work* - [Creatydev](https://github.com/Creatydev)
 * **Musa Kurt** - *Laravel 5.8 Support* - [whthT](https://github.com/whtht)
 
-See also the list of [contributors](https://github.com/rennokki/plans/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Creatydev/plans/graphs/contributors) who participated in this project.
 
 ## License
 

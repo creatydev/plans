@@ -1,6 +1,6 @@
 <?php
 
-namespace Rennokki\Plans\Exceptions;
+namespace Creatydev\Plans\Exceptions;
 
 use Exception;
 
