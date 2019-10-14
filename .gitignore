@@ -1,0 +1,4 @@
+vendor/
+composer.lock
+.env
+tests/database.sqlite

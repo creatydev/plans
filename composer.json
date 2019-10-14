@@ -1,0 +1,59 @@
+{
+    "name": "creatydev/plans",
+    "description": "Laravel Plans is a package for SaaS apps that need management over plans, features, subscriptions, events for plans or limited, countable features.",
+    "keywords": [
+        "eloquent",
+        "laravel",
+        "subscription",
+        "plan",
+        "plans",
+        "model",
+        "saas"
+    ],
+    "homepage": "https://github.com/creatydev/plans",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dukens Thelemaque",
+            "email": "dukensdev@gmail.com",
+            "homepage": "https://thelemaque-dukens.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "doctrine/dbal": "^2.9.0",
+        "stripe/stripe-php": "^6.43.0",
+        "laravel/framework": "~5.8.0|~6.0|~6.2.0"
+    },
+    "require-dev": {
+        "orchestra/database": "~3.7.0|~3.8.0|~4.0.0",
+        "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0|~3.8.0",
+        "phpunit/phpunit": "^6.2|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "creatydev\\Plans\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "creatydev\\Plans\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:basic": "phpunit --group basic",
+        "test:stripe": "phpunit --group stripe"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "creatydev\\Plans\\PlansServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
