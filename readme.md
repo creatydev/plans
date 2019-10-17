@@ -484,8 +484,8 @@ $listen = [
 
 ## Authors
 
-* **Georgescu Alexandru** - *Initial work* - [Creatydev](https://github.com/Creatydev)
-* **Musa Kurt** - *Laravel 5.8 Support* - [whthT](https://github.com/whtht)
+* **Georgescu Alexandru** - *Initial work* .
+* **Dukens Thelemaque** - *Laravel 5.8 - 6.2 Support* - [Creatydev](https://github.com/whtht)
 
 See also the list of [contributors](https://github.com/Creatydev/plans/graphs/contributors) who participated in this project.
 

@@ -21,9 +21,10 @@
         }
     ],
     "require": {
+        "creatydev/plans": "dev-master",
         "doctrine/dbal": "^2.9.0",
-        "stripe/stripe-php": "^6.43.0",
-        "laravel/framework": "~5.8.0|~6.0|~6.2.0"
+        "laravel/framework": "~5.8.0|~6.0|~6.2.0",
+        "stripe/stripe-php": "^6.43.0"
     },
     "require-dev": {
         "orchestra/database": "~3.7.0|~3.8.0|~4.0.0",
