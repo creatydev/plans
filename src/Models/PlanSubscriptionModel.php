@@ -219,8 +219,8 @@ class PlanSubscriptionModel extends Model
             ]));
         }
 
-        $used = (float) ($feature->isUnlimited()) ? ($usage->used - $amount < 0) ? 0 : ($usage->used - $amount) : ($usage->used - $amount);
-        $remaining = (float) ($feature->isUnlimited()) ? -1 : ($used > 0) ? ($feature->limit - $used) : $feature->limit;
+        $used = (float) max($usage->used - $amount, 0);
+        $remaining = (float) $feature->isUnlimited() ? -1 : $feature->limit - $used;
 
         event(new \Creatydev\Plans\Events\FeatureUnconsumed($this, $feature, $amount, $remaining));
 
