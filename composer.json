@@ -22,7 +22,7 @@
     ],
     "require": {
         "laravel/framework": "~5.8.0|~6.0|~6.2.0|^8.22.2|^9.19|^10.0",
-        "stripe/stripe-php": "^6.43.0"
+        "stripe/stripe-php": ">=12.1"
     },
     "require-dev": {
         "orchestra/database": "~3.7.0|~3.8.0|~4.0.0",
