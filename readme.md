@@ -30,7 +30,7 @@ Creatydev\Plans\PlansServiceProvider::class,
 
 Publish the config file & migration files:
 ```bash
-$ php artisan vendor:publish --provider=Creatydev\Plans\PlansServiceProvider
+$ php artisan vendor:publish --provider="Creatydev\Plans\PlansServiceProvider"
 ```
 
 Migrate the database:
